@@ -1,0 +1,38 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+  background-color: #EEEEEE;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  }
+
+	
+p {
+	font:14px/20px verdana, arial, helvetica, sans-serif;
+	margin:0px 0px 16px 0px;
+	padding:5px;
+	}
+
+a {
+	color:#09c;
+	font-family:verdana, arial, helvetica, sans-serif;
+}
+
+.link { font-size:14px; font-weight:bold; }
+a:link {text-decoration:none;}
+a:hover { text-decoration:underline; }
+
+#contactbox {
+  text-align:right;
+  }
+
+#maincontainer {
+    width: 50%;
+    margin: 20px auto;
+    padding:15px;
+    border:1px dashed #333;
+    overflow: auto;
+	}
+  

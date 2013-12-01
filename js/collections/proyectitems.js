@@ -1,0 +1,1 @@
+var ProyectItems = Backbone.Collection.extend({	model: ProyectItem,  url:  '/null'});

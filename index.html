@@ -1,36 +1,91 @@
-<!DOCTYPE html>
-<head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<title>iye's page</title>
-		<style type="text/css" media="screen">@import "main.css";</style>
-</head>
+﻿<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Iye's Homepage</title>
+        <meta name="description" content="My old projects, god willing I will update some">
+        <meta name="viewport" content="width=device-width">
 
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
 
-<body>
-	
-<div id="maincontainer">	
-	<div id="Header">iye's webpage</div>
+        <!--[if lt IE 9]>
+            <script src="js/vendor/html5-3.6-respond-1.1.0.min.js"></script>
+        <![endif]-->
 
+        <script type="text/javascript" src="js/vendor/jquery-1.10.1.min.js"></script>
+        <script type="text/javascript" src="js/vendor/underscore-min.js"></script>
+        <script type="text/javascript" src="js/vendor/backbone-min.js"></script>
+        <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/vendor/handlebars-v1.1.2.js"></script>
 
+        <script type="text/javascript" src="js/models/proyectitem.js"></script>
+        <script type="text/javascript" src="js/collections/proyectitems.js"></script>
+        <script type="text/javascript" src="js/views/proyectitem.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+    </head>
 
-		<h1>Projects</h1>
-		<p>Notice that all this is old stuff since I have been working in the private sector for the last couple of years</p>
-			<p><a class="link" href="https://github.com/iye/lightsOn">lightsOn.sh</a> : a Bash script that prevents Xscreensaver and Power Management to be activated when you are watching flash videos fullscreen with Firefox and Chromium.</p>
-			<p><a class="link" href="https://github.com/iye/Devilish">Devilish</a> : PyGTK App for monitoring log files realtime. It uses inotify (via <a href="http://pyinotify.sourceforge.net/">Pyinotify</a> ) to detect file modifications and when an appended line has a string you are interested in, it will alert you via your notification daemon and with an icon in the tray.</p>
-			<p><a class="link" href="https://github.com/iye/checkskyperunning.sh">CheckSkypeRunning</a> : Skype (till version 2.2.0.25 at least) has a bug where if you activate autologin and you accidentally run skype twice, the autologin option is disabeled :/ . This Bash Script will launch skype only if it's not already running and show you a dialog otherwise.</p>
-			<p><a class="link" href="radio/radio.html">Radio del Este</a> : pics of a bus radio studio on which I made all the telecomunication systems.</p>
-            <p><a class="link" href="http://crunchbanglinux.org/forums/topic/14412/tutorial-how-to-install-apparmor-in-debian-stable/">AppArmor Tutorial</a> : how to install AppArmor in Debian Stable.</p>
-			<p><a class="link" href="zm_lfi.txt">Zoneminder 1.24.3 LFI</a> : a Local File Inclusion vulnerability I found in Zoneminder.</p>
-    		<p><a class="link" href="http://tessst.dreamhosters.com/">Buscador del buzón del ciudadano de la prov. de Córdoba</a> : a search engine for inquiries made to the Córdoba state goverment via its webpage, not finished yet.</p>
-			<p><a class="link" href="http://www.meetcordoba.com.ar/">MeetCordoba.com.ar</a> : a page suggesting places to visit in the State of Córdoba, Argentina.</p>
-
-    <div id="contactbox">
-		<h1>Contact</h1>
-		<p>email: iye.cba []at[] gmail.com</p>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Iye's Proyects</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <!--<li><a href="#contact">Contact</a></li>-->
+            <!-- TODO: integrate dropdown and backbone
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div>
+      </div>
     </div>
 
+  
 
-</div>
+    <div id="maincontainer">	
+        <h1>Proyects</h1>
+          <p>NOTICE: this all is old stuff now, I have been busy working, no time to update all</p>
+          <div id="proyectList"></div>
+          <!--
+          <p><a class="link" href="https://github.com/iye/lightsOn">lightsOn.sh</a> : a Bash script that prevents Xscreensaver and Power Management to be activated when you are watching flash videos fullscreen with Firefox and Chromium.</p>
+          <p><a class="link" href="https://github.com/iye/Devilish">Devilish</a> : PyGTK App for monitoring log files realtime. It uses inotify (via <a href="http://pyinotify.sourceforge.net/">Pyinotify</a> ) to detect file modifications and when an appended line has a string you are interested in, it will alert you via your notification daemon and with an icon in the tray.</p>
+          <p><a class="link" href="https://github.com/iye/checkskyperunning.sh">CheckSkypeRunning</a> : Skype (till version 2.2.0.25 at least) has a bug where if you activate autologin and you accidentally run skype twice, the autologin option is disabeled :/ . This Bash Script will launch skype only if it's not already running and show you a dialog otherwise.</p>
+          <p><a class="link" href="radio/radio.html">Radio del Este</a> : pics of a bus radio studio on which I made all the telecomunication systems.</p>
+                <p><a class="link" href="http://crunchbanglinux.org/forums/topic/14412/tutorial-how-to-install-apparmor-in-debian-stable/">AppArmor Tutorial</a> : how to install AppArmor in Debian Stable.</p>
+          <p><a class="link" href="zm_lfi.txt">Zoneminder 1.24.3 LFI</a> : a Local File Inclusion vulnerability I found in Zoneminder.</p>
+            <p><a class="link" href="http://tessst.dreamhosters.com/">Buscador del buzón del ciudadano de la prov. de Córdoba</a> : a search engine for inquiries made to the Córdoba state goverment via its webpage, not finished yet.</p>
+          <p><a class="link" href="http://www.meetcordoba.com.ar/">MeetCordoba.com.ar</a> : a page suggesting places to visit in the State of Córdoba, Argentina.</p>
+          -->
 
-
-</body></html>
+        <div id="contactbox">
+          <h1>Contact</h1>
+          <p>email: iye.cba []at[] gmail.com</p>
+        </div>
+    </div>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
