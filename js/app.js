@@ -8,6 +8,11 @@
   
     var proyectsArray = [
         {
+          name: 'gifOnClick.js',
+          description: 'A simple Jquery plugin based on Jquery Boilerplate that will display a specified gif image in the mouse position when onclick in the desired element.',
+          url: 'https://github.com/iye/gifOnClick.js'
+        },
+        {
           name: 'lightsOn.sh',
           description: 'a Bash script that prevents Xscreensaver and Power Management to be activated when you are watching flash videos fullscreen with Firefox and Chromium.',
           url:'https://github.com/iye/lightsOn'
