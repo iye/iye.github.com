@@ -1,7 +1,7 @@
 /*
  *  Project: gifOnClick
- *  Description: A simple Jquery plugin that will display a gif animation on the mouse position when you click inside the passed in element.
- *  Usage: $('#element').gifOnClick({gifUrl: "img/image.gif", time: 9000}); //time in miliseconds.
+ *  Description: A simple Jquery plugin that will display a gif animation on the mouse position when you click inside the chosen element.
+ *  Usage: $('#element').gifOnClick({gifUrl: "img/image.gif", time: 9000, event: "click"}); //time in miliseconds.
  *  Author: iye.github.io
  *  License: GPL
  */
@@ -23,18 +23,15 @@
                 var pluginName = "gifOnClick",
                                 defaults = {
                                 gifUrl: "image.gif",
-                                time: 800
+                                time: 800,
+                                event: "click"
                 };
 
     // The actual plugin constructor
     function Plugin( element, options ) {
 
-        var type = typeof element;
-        if (type === "object" && element.nodeType !== "undefined" && element.nodeType === 1) {
-                this.element = element;
-        } else {
-                throw new Error("Argument must be DOM element");
-        }
+        this.$element = $(element);
+
         // jQuery has an extend method which merges the contents of two or
         // more objects, storing the result in the first object. The first object
         // is generally empty as we don't want to alter the default options for
@@ -48,17 +45,10 @@
 
         Plugin.prototype = {
                         init: function () {
-                            // Place initialization logic here
-                            // You already have access to the DOM element and the options via the instance,
-                            // e.g., this.element and this.settings
-                            // Usage:
-
                             this._imagePreload([
                                 this.settings.imgUrl
                             ]);
-
-                            that=this;
-                            this.element.addEventListener('click', function(e){that._showGifFunction(e);}, null);
+                            this.$element.on(this.settings.event + "." + pluginName, this, this._showGifFunction);
                         },
 
 
@@ -70,11 +60,11 @@
                         },
 
                         _showGifFunction: function(e) {
-                                var imgEl = this._createImgElement();
-                                imgEl = this._setImgCss(imgEl, e);
-                                this.element.appendChild(imgEl);
-                                setTimeout(function() { $(imgEl).remove();}, this.settings.time);
-
+                                that=e.data;
+                                var imgEl = that._createImgElement();
+                                imgEl = that._setImgCss(imgEl, e);
+                                that.$element.prepend(imgEl);
+                                setTimeout(function() { $(imgEl).remove();}, that.settings.time);
                         },
 
                         _createImgElement: function() {
@@ -91,10 +81,6 @@
                                 imgEl.style.top=top+"px";
                                 imgEl.style.left=left+"px";
                                 return imgEl;
-                        },
-
-                        _hideImg: function(imgEl) {
-                                $(imgEl).remove();
                         }
 
         };
